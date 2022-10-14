@@ -41,6 +41,11 @@ Generating project
 
         it's good practice to use project as the end
         of your projcet name so to not confuse files. 
+
+
+
+App creation:
+        python manage.py startapp <app_name>
         
 
 
