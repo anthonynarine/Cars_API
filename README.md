@@ -4,13 +4,13 @@ My first API with Django and  REST.
 Project setup:
 
 1. create virtual enviroment.
-pipenv install
+    pipenv install
 
 2. access shell
-pipenv shell
+    pipenv shell
 
 3. set python interpreter.
-pipenv --venv
+    pipenv --venv
     copy path
     ctrl + p 
     search Python select interpreter
@@ -26,5 +26,22 @@ pipenv --venv
     pipenv install djangorestframework
 
 once this is pushed to github. if it's cloned down all installed packages will 
-automatically be installed.  
+automatically be installed.
+
+
+
+Creating Django project file.
+1. django-admin
+
+Generating project
+2. django-admin startproject <project name> .
+        a space and . is needed after the project name 
+        so that the files can be placed in the name of 
+        the project folder.
+
+        it's good practice to use project as the end
+        of your projcet name so to not confuse files. 
+        
+
+
 
