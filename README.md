@@ -186,6 +186,29 @@ Changing price to an int instead of string in django.
     by default django has this set to True
 
 
+Creating a post request using JSON
+    1. app views.py update function add post as parameter. Ex below
+ 
+@api_view(["GET", "POST"]) #the function will now accept post request. 
+def cars_list(request):
+
+    if request.method == "GET":
+    #code below will run for a get request
+        cars = Car.objects.all()
+        serializer = CarSerializer(cars, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == "POST":
+        serializer = CarSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        ~note~ from rest_framework import status *import needed. 
+
+
+
+
 
 
 
