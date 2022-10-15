@@ -148,6 +148,51 @@ and python objects into JSON
 
 
 
+Admin center setup. 
+    1. python manage.py createsuperuser
+
+    2. fill out prompts.
+        user name
+        password (you will not get to see the pw)
+        email 
+
+    check mysql workbench auth_user execute query
+    and the admin inflow will populate
+
+    3. python manage.py runserver
+       follow link
+       /admin
+       log on using username and pw
+       users and groups shold be available for edits.
+
+    4. registering the model with our Django admin.py
+       app folder -> admin.py -> import appmodel...ex below 
+
+       from .models import Car
+    
+    5. in admin.py
+       admin.site.register(Car) #the model is passed in 
+
+
+Changing price to an int instead of string in django.
+
+    1. project setting.py
+
+    2. anywere in the settng.py file add
+        REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False
+}
+
+    by default django has this set to True
+
+
+
+
+
+
+
+
+
 
 
 
