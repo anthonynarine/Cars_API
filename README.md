@@ -207,6 +207,50 @@ def cars_list(request):
         ~note~ from rest_framework import status *import needed. 
 
 
+GET BY ID
+    1. create function.
+        @api_view(["GET"])
+        def car_detail(request, pk):
+            
+            print (pk) 
+            return Response(pk)
+
+    2. link function to urls file.
+
+      path("<int:pk>/", views.car_detail) # note the syntax to pass pk
+
+            #int:pk prevents users from passing in a str for the id. 
+
+    3. function logic and Error handling 
+        
+        #create a car object where the client will pass in a pk
+        #wrap the function logic in a try/catch
+        #NOTE the syntax for the except block
+
+    def car_detail(request, pk):
+        try:
+            car = Car.objects.get(pk=pk)   #look at the pk of this Car table 
+            return Response(pk)            # and match the pk passed in     
+            
+        except Car.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    4. Add Serializers
+        def car_detail(request, pk):
+            try:
+                car = Car.objects.get(pk=pk)
+                serializer = CarSerializer(car);
+                return Response(serializer.data)  
+            
+            except Car.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            
+            
+            
+
+    
+        
+
 
 
 
