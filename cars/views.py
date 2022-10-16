@@ -23,10 +23,10 @@ def cars_list(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
-@api_view(["GET", "PUT"])
+@api_view(["GET", "PUT", "DELETE"])
 def car_detail(request, pk): 
-    """function to get + update a car details by a pk"""
-    car = get_object_or_404(Car, pk=pk)  #now available for both get and put blocks. 
+    """function to GET + UPDATE + DELETE a car details by a pk"""
+    car = get_object_or_404(Car, pk=pk)  #now available for ALL REQUEST (GET,PUT,DELETE). 
     if request.method == "GET":
         serializer = CarSerializer(car);
         return Response(serializer.data)  
@@ -35,6 +35,9 @@ def car_detail(request, pk):
         serializer.is_valid(raise_exception=True)           # incoming JSON data and compares it to the  
         serializer.save()                                   # current version of the object and update it
         return Response(serializer.data)                    # in the database. 
+    elif request.method == "DELETE":
+        car.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
         
         
 

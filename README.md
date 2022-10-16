@@ -256,8 +256,8 @@ GET BY ID
             return Response(serializer.data) 
 
 
-UPDATING:
-     CREATING UPDATE FUNCTIONALITY. 
+UPDATE REQUEST:
+     Creating functionality
 
      since updating will require a pk passed in we can add
      this functionality to car_details() 
@@ -268,11 +268,37 @@ UPDATING:
         if request.method == "GET":
             serializer = CarSerializer(car);
             return Response(serializer.data)  
+        elif request.method == "PUT":            # ADDED FUNCTIONALITY.
+            serializer = CarSerializer(car, data=request.data); 
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)  
+
+        
+DELETE REQUEST:
+    Creating functionality
+
+    since deleting will require a pk passed in we can add
+    this functionality to our car_detail 
+    
+
+     @api_view(["GET", "PUT", "DELETE"])
+     def car_detail(request, pk):
+        car = get_object_or_404(Car, pk=pk) #makes this available for both if and elif statement.
+        if request.method == "GET":
+            serializer = CarSerializer(car);
+            return Response(serializer.data)  
         elif request.method == "PUT":
             serializer = CarSerializer(car, data=request.data); 
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data)  
+        elif request.method == "DELETE":       # ADDED FUNCTIONALITY.  
+        car.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+        
+        
+
      
 
 
