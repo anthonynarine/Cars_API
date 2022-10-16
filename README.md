@@ -246,9 +246,36 @@ GET BY ID
                 return Response(status=status.HTTP_404_NOT_FOUND)
             
             
-            
+    5. from django.shortcuts import get_object_or_404.
 
-    
+        # we set car = get_object_or_404(Car,pk=pk)
+
+        def car_detail(request, pk):
+            car = get_object_or_404(Car,pk=pk)
+            serializer = CarSerializer(car);
+            return Response(serializer.data) 
+
+
+UPDATING:
+     CREATING UPDATE FUNCTIONALITY. 
+
+     since updating will require a pk passed in we can add
+     this functionality to car_details() 
+
+     @api_view(["GET", "PUT"])
+     def car_detail(request, pk):
+        car = get_object_or_404(Car, pk=pk) #makes this available for both if and elif statement.
+        if request.method == "GET":
+            serializer = CarSerializer(car);
+            return Response(serializer.data)  
+        elif request.method == "PUT":
+            serializer = CarSerializer(car, data=request.data); 
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)  
+     
+
+
         
 
 
