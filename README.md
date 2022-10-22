@@ -56,7 +56,7 @@ Linking our project to to mysqlclient
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.mysql",  ***make sure to change ENGINE from sqlite to mysql
         "NAME": "cars_database",
         "HOST": "localhost",
         "USER": "****",
@@ -83,6 +83,7 @@ git commits will not have user info and secret keys.
     3. lightning bolt 
     4. refresh
     5. database shold be seen under schemas. 
+
     6. python manage.py migrate (defined table shold be created)
 
 
@@ -125,13 +126,16 @@ class Car(models.Model):
     
 
 
+SERIALIZER CREATIN.
 
 
 Serializers are good for helping to convert JSON into pyhton objects
 and python objects into JSON
 
 
-1. import. 
+1.  In app folder create a serializer.py file
+
+    import. 
     from rest_framework import serializers
 
 2. import app. 
@@ -156,8 +160,8 @@ Admin center setup.
         password (you will not get to see the pw)
         email 
 
-    check mysql workbench auth_user execute query
-    and the admin inflow will populate
+        check mysql workbench auth_user EXECUTE query
+        and the admin inflow will populate
 
     3. python manage.py runserver
        follow link
