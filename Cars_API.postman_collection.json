@@ -37,7 +37,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"make\": \"Acura\",\r\n    \"model\": \"Legend LS\",\r\n    \"year\": 1992,\r\n    \"price\": 7500.0\r\n}",
+					"raw": "{\r\n    \"make\": \"Lexus\",\r\n    \"model\": \"Lx300\",\r\n    \"year\": 2007,\r\n    \"price\": 35000.0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -92,14 +92,62 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"make\": \"BMW\",\r\n    \"model\": \"X5\",\r\n    \"year\": 2002,\r\n    \"price\": 4000.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:8000/api/cars/16/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cars",
+						"16",
+						""
+					]
 				}
 			},
 			"response": []
 		},
 		{
 			"name": "Delete_Car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cars/18/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cars",
+						"18",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_all_car_by_dealer",
 			"request": {
 				"method": "GET",
 				"header": []

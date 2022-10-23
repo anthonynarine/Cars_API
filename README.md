@@ -30,7 +30,8 @@ automatically be installed.
 
 
 
-Creating Django project file.
+Creating Django project file:
+
 1. django-admin
 
 Generating project
@@ -126,7 +127,7 @@ class Car(models.Model):
     
 
 
-SERIALIZER CREATIN.
+SERIALIZER CREATiON:
 
 
 Serializers are good for helping to convert JSON into pyhton objects
@@ -152,7 +153,7 @@ and python objects into JSON
 
 
 
-Admin center setup. 
+Admin center setup: 
     1. python manage.py createsuperuser
 
     2. fill out prompts.
@@ -211,7 +212,7 @@ def cars_list(request):
         ~note~ from rest_framework import status *import needed. 
 
 
-GET BY ID
+GET BY ID:
     1. create function.
         @api_view(["GET"])
         def car_detail(request, pk):
@@ -301,7 +302,28 @@ DELETE REQUEST:
         car.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
         
+
+
+Query Parameters:
+
+    Query parameters come after a the base URL   
+        in this example - http://127.0.0.1:8000/api/cars  
+
+        1. the 1st query parameter must come after a question mark(?)
+
+        2. query parameters are added as key: value pairs
+            for this example key is, dealership, the value is, Julia's Sports Cars,
+            which is a dealership name in our db. 
+
+            http://127.0.0.1:8000/api/cars?dealership=Julia's Sports Cars   
         
+        3 any query parameter after the first is seperated by the and operator (&)
+          sort will be the key, year will be the value. 
+
+          http://127.0.0.1:8000/api/cars?dealership=Julia's Sports Cars&sort=year  
+
+
+     
 
      
 
